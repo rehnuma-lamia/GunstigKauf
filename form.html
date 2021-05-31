@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Form</title>
+    <link rel="stylesheet" href="form.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h1 class="main-title" id="heading">Product Checkout</h1>
+
+    <form class="form-class" action="#" onSubmit="onSubmit(event)">
+      <h1>Personal Information</h1>
+
+      <div class="box-title">
+        <label for="gender">Title</label><br />
+        <input type="radio" name="gender" value="herr" />Herr<br />
+        <input type="radio" name="gender" value="frau" />Frau<br />
+      </div>
+
+      <label for="fname">First name:</label>
+      <input
+        type="text"
+        id="fname"
+        name="fname"
+        required
+        minlength="2"
+        maxlength="50"
+      />
+
+      <label for="lname">Last name:</label>
+      <input
+        type="text"
+        id="lname"
+        name="lname"
+        required
+        minlength="2"
+        maxlength="50"
+      />
+
+      <label for="email">Email</label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        required
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+      />
+
+      <label for="phnNumber">Phone Number</label>
+      <input
+        type="number"
+        id="phnNumber"
+        name="phnNumber"
+        required
+        minlength="1"
+        maxlength="12"
+      />
+
+      <h1>Delivery Information</h1>
+      <div>
+        <label>Country</label>
+        <select name="country" id="country" required>
+          <option value="None">None</option>
+          <option value="Germany">Germany</option>
+          <option value="India">India</option>
+          <option value="Bangladesh">Bangladesh</option>
+          <option value="Italy">Italy</option>
+        </select>
+      </div>
+
+      <label for="street">Street</label>
+      <input type="text" id="street" name="street" required />
+
+      <label for="streetNo">No:</label>
+      <input
+        type="number"
+        id="streetNo"
+        name="streetNo"
+        required
+        min="1"
+        max="300"
+      />
+
+      <label for="code">Postal Code</label>
+      <input type="number" id="code" name="code" required />
+
+      <label for="city">City</label>
+      <input type="text" id="city" name="city" required />
+      <div>
+        <input
+          class="checkbox"
+          type="checkbox"
+          id="terms"
+          name="terms"
+          value="terms"
+        />
+        <label for="vehicle1"> I accept terms and conditions</label><br />
+      </div>
+
+      <button class="btn-submit" type="submit" value="Submit">Submit</button>
+    </form>
+
+    <script>
+      function onSubmit(event) {
+        const heading = document.querySelector("#heading");
+        const fname = document.querySelector("#fname");
+        heading.innerText = `Thank you ${fname.value} for purchasing the product!`;
+        event.preventDefault();
+      }
+    </script>
+  </body>
+</html>
