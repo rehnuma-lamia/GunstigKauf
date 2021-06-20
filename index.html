@@ -11,43 +11,170 @@
     <main>
       <header>
         <!-- ICON AND SOCIAL-->
-
         <nav>
           <div class="grid-container">
             <img class="logo" src="images/logo.png" alt="" />
             <h1>GunstigKauf.de</h1>
           </div>
-          <button class="btn contact-btn" href="form.html">
-            <a href="form.html" class="text">Contact</a>
+          <button class="btn contact-btn" href="contact-form.html">
+            <a href="contact-form.html" class="text">Contact</a>
           </button>
         </nav>
-
-        <!-- NAVIGATION BAR -->
       </header>
     </main>
 
-    <!-- SLIDER CONTENT -->
+  <!-- SLIDER CONTENT -->
+  <!-- Slideshow container -->
+  <div class="slideshow-container">
+
+    <!-- Full-width images with number and caption text -->
+    <div class="mySlides fade">
+      <img src="images/1.jpg" style="width:100%;height: 600px;object-fit: cover">
+      <div class="caption">Change for the better! Find fashion with a sustainable focus</div>
+    </div>
+
+    <div class="mySlides fade">
+      <img src="images/2.jpg" style="width:100%;height: 600px;object-fit: cover">
+      <div class="caption">Discover your brands. Follow brands to see more from them first</div>
+    </div>
+
+    <div class="mySlides fade">
+      <img src="images/3.jpg" style="width:100%;height: 600px;object-fit: cover">
+      <div class="caption">Even more than you expect. Fashion, sneakers, sport and more</div>
+    </div>
+
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <br>
+
+  <!-- The dots/circles -->
+  <div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div>
 
     <!-- PRODUCTS CONTENT -->
-    <h1>Popular products</h1>
-    <div class="scrollmenu">
-      <div>Product 1</div>
-      <div>Product 2</div>
-      <div>Product 3</div>
-      <div>Product 4</div>
-      <div>Product 5</div>
-      <div>Product 6</div>
-      <div>Product 7</div>
-      <div>Product 8</div>
-      <div>Product 9</div>
-      <div>Product 10</div>
-      <div>Product 11</div>
-      <div>Product 12</div>
-      <div>Product 13</div>
-      <div>Product 14</div>
-      <div>Product 15</div>
-      <div>Product 16</div>
-      <div>Product 17</div>
+    <h1 class="contenttitle">Popular products</h1>
+    <div id="scrollmenuitem" class="scrollmenu"></div>
+
+    <div class="sale-container">
+      <div>
+        <img src="images/promo.jpg" style="width:100%;height: 400px;object-fit: cover">
+      </div> 
+      <div>
+        <h1>Our best offers for you</h1>
+        <h2>Reduced for you</h2>
+      </div>
     </div>
+
+    <h1 class="contenttitle">Super cheap</h1>
+    <div id="scrollmenuitem2" class="scrollmenu"></div>
+
+    <div class="sale-container">
+      <div>
+        <h1>Summer Sale: Up to 50% off</h1>
+        <h2>10% extra on clothing</h2>
+      </div>
+      <div>
+        <img src="images/sale.jpg" style="width:100%;height: 400px;object-fit: cover">
+      </div> 
+    </div>
+
+    <div class="footer-container">
+      <div>
+        <h1>Our promises</h1>
+        <h5>Free delivery and returns</h5>
+        <h5>100-day return policy</h5>
+        <h5>Flexible payment options</h5>
+      </div>
+      <div>
+        <h1>Payment method</h1>
+        <h5>VISA</h5>
+        <h5>MASTERCARD</h5>
+        <h5>CASH on delivery</h5>
+      </div>
+      <div>
+        <h1>Delivery times</h1>
+        <h5>Standard delivery: 2-4 working days (Mon-Sat)</h5>
+        <h5>Express delivery: 1-2 working days (Mon-Sat)</h5>
+      </div>
+      <div>
+        <h3>How do I return my order?</h3>
+        <h5>If you’re not happy with your order, you have 100 days to send us back any items - FREE.</h5>
+        <img src="images/logo.png" style="width:100px;height:100px;">
+      </div> 
+    </div>
+
+    <script>
+      var slideIndex = 1;
+      showSlides(slideIndex);
+      document.addEventListener('DOMContentLoaded', function() {
+        fetchItems()
+      }, false);
+
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+      
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+      
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+      }
+
+      function fetchItems() {
+        fetch('https://fakestoreapi.com/products/', {
+                      method: 'GET',
+                          headers: {
+                              'Content-type': 'application/json; charset=UTF-8',
+                          },
+                      })
+                      .then((response) => response.json())
+                      .catch((err) => console.log(err))
+                      .then((json) => {
+                        // console.log(json)
+                        for (var i = 0; i < json.length; i++) {
+                          console.log(json[i].id)
+
+                          var title = json[i].title.substring(0,40);
+  			                  var price = json[i].price;
+                          var image = json[i].image;
+  			                  var badge = document.createElement('div');
+                          badge.id = "badge" + i 
+  			                  badge.innerHTML =
+                            '<img src="'+ image + '" style="width:300px;height: 300px;">' +
+    			                  '<h5>' + title + '</h5>' +
+                            '<h2>' + price + ' € </h2>';
+  			                  document.getElementById("scrollmenuitem").appendChild(badge);
+                          
+                          if(json[i].price < 25) {
+                            document.getElementById("scrollmenuitem2").appendChild(badge);
+                          }
+
+                          document.getElementById('badge' + i).addEventListener('click', showProductDetails);
+                          function showProductDetails(){
+                            window.open("details.html")
+                          }
+                        }
+                      });
+      }
+      </script>
   </body>
 </html>

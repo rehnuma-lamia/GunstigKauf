@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Details</title>
+    <link rel="stylesheet" href="details.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <div class="topnav">
+    <a class="active" href="index.html">Home</a>
+    <a href="contact-form.html">Contact</a>
+  </div>
+
+  <div id="detailsPage" class="detailsPage"></div>
+
+  <body>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        fetchItem()
+      }, false);
+
+      function fetchItem() {
+        fetch('https://fakestoreapi.com/products/1', {
+                      method: 'GET',
+                          headers: {
+                              'Content-type': 'application/json; charset=UTF-8',
+                          },
+                      })
+                      .then((response) => response.json())
+                      .catch((err) => console.log(err))
+                      .then((json) => {
+                        console.log(json)
+                        console.log(json.id)
+
+                        var title = json.title;
+  			            var price = json.price;
+                        var description = json.description;
+                        var category = json.category
+                        var image = json.image;
+  			            var badge = document.createElement('div');
+
+  			            badge.innerHTML =
+                            '<img src="'+ image + '" style="width:600px; height: 600px;">' +
+    			            '<h5>' + title + '</h5>' +
+                            '<h4>' + category + '</h4>' + 
+                            '<p>' + description + ' € </p>' + 
+                            '<h2>' + price + ' € </h2>' + 
+                            '<button class="btn" href="checkout-form.html">' +
+                                '<a href="checkout-form.html" class="text">Checkout</a>' +
+                            '</button>';
+  			            document.getElementById("detailsPage").appendChild(badge);
+            
+                        document.getElementById('badge').addEventListener('click', showProductDetails);
+                        function showProductDetails() {
+                            window.open("details.html")
+                        }
+                      });
+      }
+       
+    </script>
+    </body>
+</html>
+  

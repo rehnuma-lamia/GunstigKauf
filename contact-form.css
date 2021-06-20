@@ -1,0 +1,76 @@
+/* REUSABLE ITEMS */
+:root {
+  --color-pink: #fbcec2;
+  --color-light-blue: #d3e3fc;
+  --color-teal: #187165;
+  --color-grayish-blue: hsl(208, 11%, 55%);
+  --color-box-shadow: rgba(200, 200, 200, 0.6);
+  --fs-body: 18px;
+  --fs-text: 20px;
+  --ff-headings: "Poppins", sans-serif;
+  --ff-body: "Open Sans", sans-serif;
+  --fw-bold: 800;
+  --fw-medium: 600;
+  --fw-light: 400;
+}
+
+body {
+  font-family: var(--ff-body);
+  color: var(--color-teal);
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-pink);
+}
+
+.main-title {
+  text-align: center;
+  color: var(--color-teal);
+}
+
+.form-class {
+  background-color: var(--color-box-shadow);
+  border: 2px solid var(--color-grayish-blue);
+  border-radius: 4px;
+  padding: 50px;
+  margin-top: 20px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.form-class label {
+  padding: 10px;
+}
+
+.form-class input {
+  width: 100%;
+  border: 2px solid var(--color-teal);
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.checkbox {
+  width: 5% !important;
+}
+
+.box-title {
+  margin-top: 10px;
+}
+
+.box-title input {
+  width: auto;
+  margin-top: 10px;
+}
+
+.btn-submit {
+  height: 40px;
+  width: 140px;
+  background-color: var(--color-teal);
+  color: white;
+  border: 2px soli var(--color-teal);
+  margin-top: 10px;
+}
+
+input:valid {
+  border: 2px solid var(--color-pink);
+}

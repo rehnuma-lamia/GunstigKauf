@@ -1,0 +1,64 @@
+/* REUSABLE ITEMS */
+:root {
+  --color-pink: #fbcec2;
+  --color-light-blue: #d3e3fc;
+  --color-teal: #187165;
+  --color-grayish-blue: hsl(208, 11%, 55%);
+  --color-box-shadow: rgba(200, 200, 200, 0.6);
+  --fs-body: 18px;
+  --fs-text: 20px;
+  --ff-headings: "Poppins", sans-serif;
+  --ff-body: "Open Sans", sans-serif;
+  --fw-bold: 800;
+  --fw-medium: 600;
+  --fw-light: 400;
+}
+
+body {
+  font-family: var(--ff-body);
+  color: var(--color-teal);
+  margin: 0;
+  padding: 0;
+}
+
+.detailsPage {
+  padding: 20px;
+}
+
+.btn {
+  background-color: white;
+  color: var(--color-dark-cyan);
+  box-shadow: 2px 2px 10px var(--color-grayish-blue);
+  padding: 10px 50px;
+  font-weight: var(--fw-bold);
+  border-radius: 20px;
+}
+
+.btn a {
+  color: var(--color-dark-cyan) !important;
+  text-decoration: none;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: var(--color-light-blue);
+}
+
+.topnav a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: var(--color-grayish-blue);
+  color: black;
+}
+
+.topnav a.active {
+  background-color: var(--color-teal);
+  color: white;
+}
